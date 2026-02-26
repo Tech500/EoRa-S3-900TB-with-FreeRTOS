@@ -221,4 +221,4 @@ See [LICENSE](LICENSE) for full terms.
 
 ---
 
-*73 de Tech500*
+*73 de AB9NQ (Tech500)*
