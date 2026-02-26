@@ -1,6 +1,6 @@
 # EoRa-S3-900TB with FreeRTOS — LoRa Camera Control System
 
-A long-range wireless camera battery control system built on the **EoRa-S3-900TB** development board (ESP32-S3 + SX1262 LoRa). A FreeRTOS-based Transmitter (TX) sends commands over LoRa to a deep-sleep Receiver (RX) that controls camera power via a KY-002S bi-stable latching relay.
+A long-range wireless camera battery control system built on the **EoRa-S3-900TB** development board (ESP32-S3 + SX1262 LoRa). A FreeRTOS-based Transmitter (TX) sends commands over LoRa to a deep-sleep Receiver (RX) that controls camera power via a KY-002S bi-stable latching switch.
 
 ---
 
