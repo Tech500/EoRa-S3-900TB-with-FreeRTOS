@@ -201,7 +201,7 @@ Timer Wake (120s camera window expired)
         ├── YES  →  pulseCameraRelay (OFF)  →  loraReset()  →  enterDeepSleepEXT0()
         └── NO   →  stale timer, ignored   →  enterDeepSleepEXT0()
 ```
-## 🤝 Credits & Acknowledgements
+##  Credits & Acknowledgements
 
 This project was developed with testing and guidance from:
 - **William Lucid** – Founder & Developer  
