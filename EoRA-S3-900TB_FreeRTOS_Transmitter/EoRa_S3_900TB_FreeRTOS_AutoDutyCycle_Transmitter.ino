@@ -13,8 +13,8 @@
 #include "index7.h"         // HTML7 + processor7
 
 // -------------------- WiFi Credentials --------------------
-const char* ssid = "R2D2";
-const char* password = "Sky7388500";
+const char* ssid = "yourSSID";
+const char* password = "yourPassword";
 
 // ---------------------------
 // Timestamp helper
