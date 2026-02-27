@@ -23,7 +23,9 @@
 // DIO1 -> 74HC04 -> 74HC04 -> GPIO16 (RTC)
 #define WAKE_PIN                    GPIO_NUM_16
 
-#define CAM_PWR_PIN                 10
+// -------------------- Camera Power Pins --------------------
+#define KY002S_TRIGGER              45   // Camera ON/OFF control
+#define KY002S_STATUS               44   // Status input 
 
 #define SDCARD_MOSI                 11
 #define SDCARD_MISO                 2
@@ -74,4 +76,5 @@ inline void go_to_deep_sleep(uint64_t us = 0) {
   Serial.flush();
   esp_deep_sleep_start();
 }
+
 
