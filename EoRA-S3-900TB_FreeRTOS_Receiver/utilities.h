@@ -36,10 +36,10 @@
 #define BUTTON_PIN                  0
 
 // -------------------- Camera Power Pins --------------------
-#define KY002S_TRIGGER   GPIO_NUM_10    // Camera ON/OFF control
-#define KY002S_STATUS    GPIO_NUM_11    // Optional status input
+#define KY002S_TRIGGER              45   // Camera ON/OFF control
+#define KY002S_STATUS               44   // Status input   
 
-#define PULSE_MS            50
+#define PULSE_MS            200
 
 #else
 #error "For the first use, please define the board version and model in <utilities.h>"
@@ -78,4 +78,5 @@ inline void go_to_deep_sleep(uint64_t us = 0) {
   Serial.flush();
   esp_deep_sleep_start();
 }
+
 
