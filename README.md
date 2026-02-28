@@ -33,7 +33,7 @@ Web request → /relay route
   → sends WOR preamble (0xAA) ──LoRa──→  EXT0 wakes RX
   → sends command packet (0xBB) ──────→  RX receives cmd
                                               │
-                                         cmd 1 → camera ON
+                                         Web link → camera ON (KY-002S pulse)
                                               → radio.sleep()
                                               → Timer sleep (120s)
                                               │
@@ -46,7 +46,9 @@ Web request → /relay route
 
 ---
 
-## TX — Transmitter (FreeRTOS)
+## TX — Transmitter (FreeRTOS) 
+
+TX only used for one preaamble and command packet; conserving battery power.
 
 The TX runs on **Core 1** with an `AsyncWebServer` handling web requests and a dedicated `txTask` processing LoRa sends.
 
