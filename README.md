@@ -100,7 +100,7 @@ Entered after `cmd 1` only. Radio placed in `radio.sleep()`. Camera remains ON f
 | Command | Action |
 |---|---|
 | `cmd 1` | Camera ON (KY-002S pulse) → `radio.sleep()` LoRa module powered down → Timer sleep (120s) |
-| `cmd 2` | Camera OFF immediately (KY-002S pulse) → EXT0 sleep |
+| `Timer Expired` | Camera OFF immediately (KY-002S pulse) → EXT0 sleep |
 
 ### KY-002S Switch Control
 
