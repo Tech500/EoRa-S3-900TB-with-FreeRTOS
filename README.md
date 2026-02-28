@@ -40,8 +40,7 @@ Web request → /relay route
                                               → camera OFF (KY-002S pulse)
                                               → loraReset()
                                               → EXT0 sleep
-                                         cmd 2 → camera OFF immediately
-                                              → EXT0 sleep
+                                         
 ```
 
 ---
@@ -69,7 +68,7 @@ Syncs NTP time on boot using `configTzTime()`. Higher priority than `txTask` to 
 | Type | Value | Purpose |
 |---|---|---|
 | Wake packet | `0xAA` | WOR preamble — wakes RX from deep sleep |
-| Command packet | `0xBB` | Carries `cmd` (1 or 2) and `timestr` timestamp |
+| Command packet | `0xBB` | Carries `cmd` (1) and `timestr` timestamp |
 | ACK packet | `0xFF` | Acknowledgement from RX back to TX |
 
 ---
@@ -97,10 +96,10 @@ Entered after `cmd 1` only. Radio placed in `radio.sleep()`. Camera remains ON f
 
 | Command | Action |
 |---|---|
-| `cmd 1` | Camera ON (KY-002S pulse) → `radio.sleep()` → Timer sleep (120s) |
+| `cmd 1` | Camera ON (KY-002S pulse) → `radio.sleep()` LoRa module powered down → Timer sleep (120s) |
 | `cmd 2` | Camera OFF immediately (KY-002S pulse) → EXT0 sleep |
 
-### KY-002S Relay Control
+### KY-002S Switch Control
 
 The KY-002S is a **bi-stable latching switch** — it holds its state indefinitely without power. A single HIGH→LOW pulse on `KY002S_TRIGGER` toggles the switch state.
 
@@ -192,8 +191,8 @@ EXT0 Wake (LoRa WOR preamble detected)
   └─→ initRadio()  →  startReceive()
         ├── 0xAA (WOR wake packet)  →  startReceive() continue
         └── 0xBB (command packet)   →  sendAck()  →  handleCommand()
-                ├── cmd 1  →  pulseCameraRelay (ON)  →  radio.sleep()  →  enterDeepSleepTimer()
-                └── cmd 2  →  pulseCameraRelay (OFF) →  enterDeepSleepEXT0()
+                ├── cmd 1  →  pulseCameraRelay (ON)  →  radio.sleep()  →  Timer wake up set → enterDeepSleepEXT0 
+                └── Timer expired  →  pulseCameraRelay (OFF) →  enterDeepSleepEXT0()
 
 Timer Wake (120s camera window expired)
   └─→ cameraTimerArmed?
