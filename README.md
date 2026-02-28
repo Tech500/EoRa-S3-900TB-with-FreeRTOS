@@ -16,7 +16,7 @@ A long-range wireless camera battery control system built on the **EoRa-S3-900TB
 
 | Pin | Function |
 |---|---|
-| `KY002S_TRIGGER` | RTC GPIO — HIGH→LOW pulse to toggle switch latch |
+| `KY002S_TRIGGER` | GPIO — HIGH→LOW pulse to toggle switch latch |
 | `KY002S_STATUS` | Input only — reads actual switch state on boot |
 | `GPIO_NUM_16` | EXT0 wakeup — LoRa DIO1 interrupt |
 
