@@ -48,7 +48,7 @@ Web request → /relay route
 
 ## TX — Transmitter (FreeRTOS) 
 
-TX only used for one preaamble and command packet; conserving battery power.
+TX only used for one preamble and command packet; conserving battery power.
 
 The TX runs on **Core 1** with an `AsyncWebServer` handling web requests and a dedicated `txTask` processing LoRa sends.
 
