@@ -8,9 +8,8 @@ A long-range wireless camera battery control system built on the **EoRa-S3-900TB
 
 | Component | Description |
 |---|---|
-| **EoRa-S3-900TB** | ESP32-S3 development board with onboard SX1262 LoRa (900 MHz) |
+| ** 2 -EoRa-S3-900TB** | ESP32-S3 development board with onboard SX1262 LoRa (900 MHz) |
 | **KY-002S** | Bi-stable latching switch — holds state without power, triggered by HIGH→LOW pulse |
-| **SX1262** | LoRa transceiver — WOR (Wake on Radio) duty cycle mode on RX |
 
 ### Pin Definitions (RX)
 
