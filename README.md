@@ -9,6 +9,7 @@ A long-range wireless camera battery control system built on the **EoRa-S3-900TB
 | Component | Description |
 |---|---|
 | ** 2 - EoRa-S3-900TB** | ESP32-S3 development board with onboard SX1262 LoRa (900 MHz) |
+| ** Avaiable from [EbyteIoT.com](https://ebyteiot.com/products/ebyte-oem-odm-eora-s3-900tb-22dbm-7km-mini-low-power-and-long-distance-sx1262-rf-module-lora-module-915mhz) |
 | **KY-002S** | Bi-stable latching switch — holds state without power, triggered by HIGH→LOW pulse |
 
 ### Pin Definitions (RX)
