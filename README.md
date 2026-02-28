@@ -129,7 +129,7 @@ Cold boot
 
 ### Radio Reset on Timer Wakeup
 
-After `radio.sleep()` + ESP32 deep sleep, the SX1262 may be in an unknown state on wakeup. `loraReset()` performs a hardware RST pin pulse followed by `initRadio()` re-initialization before returning to EXT0 sleep.
+After `radio.sleep()` + ESP32 deep sleep, the SX1262 may be in an unknown state on wakeup. `radio.reset()` performs a hardware RST pin pulse followed by `initRadio()` re-initialization before returning to EXT0 sleep.
 
 ```cpp
 // radio.reset() — called on timer wakeup only
