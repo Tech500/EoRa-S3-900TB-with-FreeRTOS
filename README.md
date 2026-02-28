@@ -132,11 +132,11 @@ Cold boot
 After `radio.sleep()` + ESP32 deep sleep, the SX1262 may be in an unknown state on wakeup. `loraReset()` performs a hardware RST pin pulse followed by `initRadio()` re-initialization before returning to EXT0 sleep.
 
 ```cpp
-// loraReset() — called on timer wakeup only
+// radio.reset() — called on timer wakeup only
 RST pin LOW (10ms) → HIGH (10ms) → initRadio()
 
 // initRadio() — called on cold boot (chip already clean)
-LoRa.setPins() → LoRa.begin()
+radio.setPins() → radio.begin()
 ```
 
 ---
@@ -149,14 +149,15 @@ EoRa-S3-900TB-with-FreeRTOS/
 │   ├── main.cpp          # setup(), FreeRTOS tasks, web routes
 │   ├── radio_eora.h/cpp  # SX1262 init, WOR, transmit helpers
 │   ├── packet_struct.h   # LoraPacket, AckPacket structs
-│   ├── utilities.h/cpp   # NTP, timestamp helpers
-│   └── boards.h          # Pin definitions
+│   ├── utilities.h       # Pin definitions, NTP, timestamp helpers
+│   └── boards.h          # EoRa-S3-900TB peripherals setup
 │
 ├── EoRA-S3-900TB_FreeRTOS_Receiver/
 │   ├── main.cpp          # setup(), deep sleep state machine
 │   ├── radio_eora.h/cpp  # SX1262 init, WOR, receive helpers
 │   ├── packet_struct.h   # LoraPacket, AckPacket structs
-│   └── boards.h          # Pin definitions
+│   ├── utilities.h       # Pin definitions, NTP, timestamp helpers
+│   └── boards.h          # EoRa-S3-900TB peripherals setup
 │
 └── LICENSE               # MIT
 ```
