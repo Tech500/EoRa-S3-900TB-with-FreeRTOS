@@ -182,6 +182,7 @@ EoRa-S3-900TB-with-FreeRTOS/
 - **IDE:** PlatformIO or Arduino IDE 2.x
 - **Board:** EoRa-S3-900TB (select appropriate ESP32-S3 board definition)
 - **Frequency:** 915 MHz (US) — adjust in `radio_eora` init for your region
+   ISM Band is regulated by region! Must match region when ordered!
 
 ---
 
