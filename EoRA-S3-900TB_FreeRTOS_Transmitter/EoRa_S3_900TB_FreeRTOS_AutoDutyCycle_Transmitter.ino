@@ -233,7 +233,7 @@ void waitForBusy() {
 // -------------------- Send WOR + Payload --------------------
 bool sendWORCommand(uint8_t command) {
   // 1. WOR wake packet
-  LoraPacket wor;
+  LoraPacket wor = {};
   wor.type = 0xAA;
   wor.cmd = command;
   memset(wor.timestr, 0, sizeof(wor.timestr));
