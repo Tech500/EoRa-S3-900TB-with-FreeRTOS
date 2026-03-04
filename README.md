@@ -231,7 +231,7 @@ The ESP32-S3 must be in **bootloader/download mode** before the Arduino IDE can 
 
 After flashing both the **transmitter** and **receiver**, perform a **cold boot** on both units to synchronize them. A cold boot is required after every fresh flash.
 
-Open browser; type the server ipAddress/relay in the address bar, press enter to trigger KY002S switch.  Transmitter uses a static ipAddress 192.168.12.27; will likely need to be edited.
+Open browser; type the server ipAddress/relay in the address bar, press enter to trigger KY002S switch.  Transmitter uses a static ipAddress 192.168.12.27; will likely need to be edited.  Find it in wifi_Start function; edit ipAddress, Gateway, and DNS.
 
 ---
 
