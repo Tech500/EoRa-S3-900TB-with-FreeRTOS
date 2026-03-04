@@ -41,6 +41,11 @@ void handleTimerWake();
 void enterDeepSleepEXT0();
 
 void handlePacket(const LoraPacket& pkt) {
+  if (pkt.type != 0xBB) {
+    Serial.printf("RX: Ignoring non-command packet (type=0x%02X)\n", pkt.type);
+    return;  // ← drop WOR preamble and anything else unexpected
+  }
+
   Serial.printf("RX: CMD = %u\n", pkt.cmd);
   Serial.printf("RX: Timestamp = %s\n", pkt.timestr);
 
@@ -105,6 +110,8 @@ void setup() {
   gpio_deep_sleep_hold_dis();
   gpio_hold_dis(GPIO_NUM_16);
 
+  setCpuFrequencyMhz(80);
+
   initRelayState();
 
   initBoard();
@@ -139,6 +146,7 @@ void setup() {
   // ================================================================
    if (cause != ESP_SLEEP_WAKEUP_EXT0) {
         Serial.println("Cold boot → camera init → deep sleep");
+        initRelayState();  // Read KY-002S status pin
         enterDeepSleepEXT0();
         return;
     }
