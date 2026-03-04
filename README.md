@@ -363,7 +363,7 @@ This project was developed with testing and guidance from:
 
 ## License
 
-MIT License — Copyright (c) 2026 William Lucid, AB9NQ (Tech500)
+MIT License — Copyright (c) 2026 William Lucid
 
 See [LICENSE](LICENSE) for full terms.
 
