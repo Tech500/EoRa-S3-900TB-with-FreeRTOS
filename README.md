@@ -8,7 +8,7 @@ A long-range wireless camera battery control system built on the **EoRa-S3-900TB
 
 Before moving to our apartment, there was a wetland pond behind our backyard. A Wyze Cam 3 was mounted above the shed to observe wildlife activity. The camera required a 10,000 mAh power bank, which barely lasted ~24 hours of continuous use before needing a swap.
 
-The goal became powering the camera **only on demand** — when a viewer clicks the "videofeed" link on the hosted website. Clicking the **Observations II** link returns the viewer to the main menu.
+The goal became powering the camera **only on demand** — when a viewer clicks the ["videofeed"](https://weather-observations.live/Videofeed.html) link on the hosted website. Clicking the **Observations II** link returns the viewer to the main menu.
 
 ---
 
