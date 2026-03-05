@@ -1,3 +1,49 @@
+/*
+ * ==============================================================
+ *  Project:  EoRa-S3-900TB-with-FreeRTOS
+ *  File:     EoRa_S3_900TB_FreeRTOS_AutoDutyCycle_Transmitter.ino
+ * ===============================================================
+ *
+ *  Developer and Founder:   William Lucid, AB9NQ (Tech500)
+ *  Hardware: Ebyte EoRa-S3-900TB (SX1262, ESP32-S3)
+ *  Library:  RadioLib v7.5.0 by Jan Gromes
+ *
+ *  Description:
+ *    LoRa WOR (Wake-On-Radio) duty cycle based camera power
+ *    control system. TX sends a wake packet followed by a
+ *    command packet. RX wakes from deep sleep on WOR interrupt,
+ *    receives the command, controls camera power via GPIO,
+ *    and sends an ACK back to TX.
+ *
+ *  Features:
+ *    - WOR duty cycle deep sleep for low power operation
+ *    - Struct-based messaging with type identification
+ *      (0xAA = wake, 0xBB = command, 0xFF = ACK)
+ *    - Interrupt-driven ACK handshake via radio.setDio1Action()
+ *    - NTP timestamp delivery with Indianapolis DST support
+ *    - AsyncWebServer trigger for remote camera ON/OFF control
+ *    - EXT0 Timer Wake of 120 seconds for auto-off countdown
+ *
+ *  Development Assistance:
+ *    Claude AI (Anthropic - claude.ai)
+ *    Significant debugging and design assistance provided by
+ *    Claude AI throughout development, including:
+ *      - Interrupt handling via radio.setDio1Action()
+ *      - WOR timing and deep sleep synchronization
+ *      - Struct-based packet type identification
+ *      - ACK handshake state machine design
+ *      - ISR safety and watchdog crash resolution
+ *     Additional AI contributions:
+ *     ChatGPT (Open AI). Copilot (Microfoft); and Gemini (Google).
+ *  References:
+ *    RadioLib Examples: https://github.com/jgromes/RadioLib
+ *    Ebyte EoRa-S3-900TB Examples:
+ *    https://github.com/Tech500/Ebyte-EoRa-S3-900TB-RadioLib-Examples
+ *
+ *  Date:    5 March 2026
+ * ============================================================
+ */
+
 #define EoRa_PI_V1
 #include <Arduino.h>
 #include "RadioLib.h"
