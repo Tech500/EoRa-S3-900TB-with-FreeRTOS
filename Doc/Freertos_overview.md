@@ -147,15 +147,15 @@ WiFi drops happen. With FreeRTOS, your reconnection logic lives in its own task 
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  FreeRTOS Scheduler                  │
+│                  FreeRTOS Scheduler                 │
 ├─────────────────┬─────────────────┬─────────────────┤
 │   Sensor Task   │  Control Logic  │    WiFi Task    │
 │    (HIGH)       │    (MEDIUM)     │     (LOW)       │
-│                 │                 │                  │
-│   10ms tick     │   50ms tick     │  Whenever ready  │
+│                 │                 │                 │
+│   10ms tick     │   50ms tick     │ Whenever ready  │
 └────────┬────────┴────────┬────────┴────────▲────────┘
-         │                 │                  │
-         │                 └──── Queue ───────┘
+         │                 │                 │
+         │                 └──── Queue ──────┘
          │                   (sensor data)
          ▼
     Read Sensors
