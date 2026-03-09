@@ -98,7 +98,7 @@ The RX uses **ESP32 deep sleep** exclusively — no FreeRTOS, no `Ticker`. All t
 | `autoDutyCycle` listening spike (~9 ms active) | ~11 mA |
 | Between spikes (`deep sleep`) | ~25.38 µA |
 | Duty-cycle average | **~174 µA** |
-| Between camera ON and camera OFF `radio.sleep()` | -17- ~18 µA |
+| Between camera ON and camera OFF (`radio.sleep()`) | -17- ~18 µA |
 
 `autoDutyCycle` (no parameters) is responsible for the ~174 µA average current. When listening for 9 ms it consumes ~11 mA; current between spikes is ~17–18 µA during `radio.sleep()`.
 
