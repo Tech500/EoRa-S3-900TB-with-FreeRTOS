@@ -59,7 +59,7 @@ Web request → /relay route
 
 ## TX — Transmitter (FreeRTOS)
 
-TX is only used for one preamble and command packet, conserving battery power.
+TX is only used for one preamble and command packet.
 
 The TX runs on **Core 1** with an `AsyncWebServer` handling web requests and a dedicated `txTask` processing LoRa sends.
 
@@ -98,9 +98,9 @@ The RX uses **ESP32 deep sleep** exclusively — no FreeRTOS, no `Ticker`. All t
 | `autoDutyCycle` listening spike (~9 ms active) | ~11 mA |
 | Between spikes (`deep sleep`) | ~25.38 µA |
 | Duty-cycle average | **~174 µA** |
-| Between camera ON and camera OFF (`radio.sleep()`) | -17- ~18 µA |
+| Between camera ON and camera OFF (`radio.sleep()`) | -17 - ~18 µA |
 
-`autoDutyCycle` (no parameters) is responsible for the ~174 µA average current. When listening for 9 ms it consumes ~11 mA; current between spikes is ~17–18 µA during `radio.sleep()`.
+`autoDutyCycle` (no parameters) is responsible for the ~174 µA average current. When listening for 9 ms it consumes ~11 mA; current between spikes is ~25.38 µA.
 
 📊 [NPPK II Observations (PDF)](https://github.com/Tech500/EoRa-S3-900TB-with-FreeRTOS/blob/main/Doc/NPPK%20II%20Observations.pdf)
 📊 [NPPK II Battery Life Analysis (PDF)](https://github.com/Tech500/EoRa-S3-900TB-with-FreeRTOS/blob/main/Doc/NPPK_II_Battery_Life_Analysis.pdf)
@@ -118,14 +118,14 @@ The RX uses **ESP32 deep sleep** exclusively — no FreeRTOS, no `Ticker`. All t
 Radio placed in `startReceiveDutyCycleAuto()` WOR mode before sleep. DIO1 fires on preamble detection, EXT0 wakes the ESP32.
 
 **SLEEP-2 — Timer (Camera Window)**
-Entered after `cmd 1` only. Radio placed in `radio.sleep()`. Camera remains ON for 120 seconds. Timer wakeup cuts camera power and resets radio.
+Entered after `cmd 1` only. Radio placed in `radio.sleep()`. Camera remains ON for 120 seconds. Timer wakeup cuts camera power and resets radio.  Camera is powered by a separate battery, power bank; from the LiPo battery.
 
 ### Command Handling
 
 | Command | Action |
 | --- | --- |
-| `cmd 1` | Camera ON (KY-002S pulse) → `radio.sleep()` → Timer sleep (120s) |
-| `Timer Expired` | Camera OFF (KY-002S pulse) → EXT0 sleep |
+| `cmd 1` | Camera ON (KY002S pulse) → `radio.sleep()` → Timer sleep (120s) |
+| `Timer Expired` | Camera OFF (KY002S pulse) → EXT0 sleep |
 
 ### KY002S Switch Control
 
@@ -218,7 +218,7 @@ EoRa-S3-900TB-with-FreeRTOS/
 
 ## Project Video
 
-[One Complete Web Request --"EoRa-S3-900TB with FreeRTOS"](https://vimeo.com/1170668110?share=copy)
+[One Complete Web Request --"EoRa-S3-900TB with FreeRTOS"](https://vimeo.com/1170668110?share=copy&fl=sv&fe=ci)
 
 ---
 
