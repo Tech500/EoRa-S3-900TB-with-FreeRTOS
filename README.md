@@ -218,11 +218,7 @@ EoRa-S3-900TB-with-FreeRTOS/
 
 ## Project Video
 
-## Project Video
-
-## Project Video
-
-[![Watch the Demo](https://i.vimeocdn.com/video/1170668110_640.jpg)](https://player.vimeo.com/video/1170668110?autoplay=1)
+<a href="https://player.vimeo.com/video/1170668110?autoplay=1" target="_blank">Demo of "EoRa-S3-900TB with FreeRTOS"</a>
 
 ---
 
