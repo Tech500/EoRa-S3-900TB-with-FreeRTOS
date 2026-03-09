@@ -1,6 +1,6 @@
 # EoRa-S3-900TB with FreeRTOS — LoRa Camera Control System — Avg 174 µA
 
-A long-range wireless camera battery control system built on the **EoRa-S3-900TB** development board (ESP32-S3 + SX1262 LoRa). A FreeRTOS-based Transmitter (TX) sends commands over LoRa to a deep-sleep Receiver (RX) that controls camera power via a KY-002S bi-stable latching switch.
+A long-range wireless camera battery control system built on the **EoRa-S3-900TB** development board (ESP32-S3 + SX1262 LoRa). A FreeRTOS-based Transmitter (TX) sends commands over LoRa to a deep-sleep Receiver (RX) that controls camera power via a KY002S bi-stable latching switch.
 
 ---
 
@@ -18,7 +18,7 @@ The goal became powering the camera **only on demand** — when a viewer clicks 
 | --- | --- |
 | **2 × Ebyte EoRa-S3-900TB** | ESP32-S3 development board with onboard SX1262 LoRa (900 MHz) |
 | **Available from:** [EbyteIoT.com](https://ebyteiot.com/products/ebyte-oem-odm-eora-s3-900tb-22dbm-7km-mini-low-power-and-long-distance-sx1262-rf-module-lora-module-915mhz) | Regulated; match local ISM band frequency |
-| **KY-002S** | Bi-stable latching switch — holds state without power, triggered by HIGH→LOW pulse |
+| **KY002S** | Bi-stable latching switch — holds state without power, triggered by HIGH→LOW pulse |
 
 ### Pin Definitions (RX)
 
@@ -96,8 +96,9 @@ The RX uses **ESP32 deep sleep** exclusively — no FreeRTOS, no `Ticker`. All t
 | State | Current |
 | --- | --- |
 | `autoDutyCycle` listening spike (~9 ms active) | ~11 mA |
-| Between spikes (`radio.sleep()`) | ~17–18 µA |
+| Between spikes (`deep sleep`) | ~25.38 µA |
 | Duty-cycle average | **~174 µA** |
+| Between camera ON and camera OFF `radio.sleep()` | -17- ~18 µA |
 
 `autoDutyCycle` (no parameters) is responsible for the ~174 µA average current. When listening for 9 ms it consumes ~11 mA; current between spikes is ~17–18 µA during `radio.sleep()`.
 
@@ -126,9 +127,9 @@ Entered after `cmd 1` only. Radio placed in `radio.sleep()`. Camera remains ON f
 | `cmd 1` | Camera ON (KY-002S pulse) → `radio.sleep()` → Timer sleep (120s) |
 | `Timer Expired` | Camera OFF (KY-002S pulse) → EXT0 sleep |
 
-### KY-002S Switch Control
+### KY002S Switch Control
 
-The KY-002S is a **bi-stable latching switch** — it holds its state indefinitely without power. A single HIGH→LOW pulse on `KY002S_TRIGGER` toggles the switch state.
+The KY002S is a **bi-stable latching switch** — it holds its state indefinitely without power. A single HIGH→LOW pulse on `KY002S_TRIGGER` toggles the switch state.
 
 On **cold boot**, `initRelayState()` reads the `KY002S_STATUS` pin to determine the true switch state and pulses OFF if the camera is found ON — no blind assumptions.
 
@@ -205,10 +206,19 @@ EoRa-S3-900TB-with-FreeRTOS/
 │   └── radio_eora.h      # Radio function declarations and constants
 │
 ├── Doc/                  # Documentation and reference files
-└── LICENSE               # MIT
+├──Images                 # Related images
+├── Schematic             # Transmitter and Receiver Schematics
+└── LICENSE               # MIT License
+
 ```
 
 > **Important:** All files must reside in the **same sketch folder** as the `.ino` file. Arduino IDE requires all supporting files to be co-located with the main sketch for compilation to succeed.
+
+---
+
+## Project Video
+
+[One Complete Web Request --"EoRa-S3-900TB with FreeRTOS"](https://vimeo.com/1170668110?share=copy)
 
 ---
 
