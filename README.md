@@ -337,6 +337,8 @@ Download and install **Arduino IDE 2.x** from [arduino.cc/en/software](https://w
 | [AsyncTCP](https://github.com/ESP32Async/AsyncTCP) | Required by ESPAsyncWebServer |
 | Arduino ESP32 core | FreeRTOS, deep sleep, RTC GPIO APIs |
 
+To guarantee that you’re using the latest version of the ESPAsyncWebServer and AsyncTCP libraries, please install them via ZIP folder (don’t use the Library Manager that will currently install an older version with issues).
+
 ---
 
 ## Documentation & References
