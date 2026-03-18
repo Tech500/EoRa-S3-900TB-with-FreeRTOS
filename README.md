@@ -282,8 +282,8 @@ Download and install **Arduino IDE 2.x** from [arduino.cc/en/software](https://w
 | Library | Author |
 | --- | --- |
 | **RadioLib** | Jan Gromes |
-| **ESPAsyncWebServer** | me-no-dev |
-| **AsyncTCP** | me-no-dev |
+| **ESPAsyncWebServer** | ESP32Async |
+| **AsyncTCP** | ESP32Async |
 
 ---
 
