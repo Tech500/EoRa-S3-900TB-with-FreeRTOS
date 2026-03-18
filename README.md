@@ -333,8 +333,8 @@ Download and install **Arduino IDE 2.x** from [arduino.cc/en/software](https://w
 | Library | Purpose |
 | --- | --- |
 | [RadioLib](https://github.com/jgromes/RadioLib) | SX1262 LoRa driver, WOR duty cycle |
-| [ESPAsyncWebServer]([ESP32Async](https://github.com/ESP32Async/ESPAsyncWebServer)) | Async web server on TX |
-| [AsyncTCP](https://github.com/ESP32Async/AsyncTCP)) | Required by ESPAsyncWebServer |
+| [ESPAsynWebServer](https://github.com/ESP32Async/ESPAsyncWebServer) | Async web server on TX |
+| [AsyncTCP](https://github.com/ESP32Async/AsyncTCP) | Required by ESPAsyncWebServer |
 | Arduino ESP32 core | FreeRTOS, deep sleep, RTC GPIO APIs |
 
 ---
